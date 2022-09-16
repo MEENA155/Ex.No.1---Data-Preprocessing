@@ -23,19 +23,50 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-##ALGORITHM:
-Importing the libraries
-Importing the dataset
-Taking care of missing data
-Encoding categorical data
-Normalizing the data
-Splitting the data into test and train
+## ALGORITHM:
+1.Importing the libraries
+2.Importing the dataset
+3.Taking care of missing data
+4.Encoding categorical data
+5.Normalizing the data
+6.Splitting the data into test and train
 
-##PROGRAM:
-/Write your code here/
+## PROGRAM:
+```
+Register Number: 212221240028
+Name: Meena .S
+import pandas as pd
+df=pd.read_csv("/content/Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
+## OUTPUT:
+![Screenshot (82)](https://user-images.githubusercontent.com/94677128/190648130-b637d5ee-d904-45d0-9b75-3449492ea0fe.png)
+![Screenshot (86)](https://user-images.githubusercontent.com/94677128/190648303-00014500-68ba-4fab-afbe-69fdbcdaf6b4.png)
+![Screenshot (87)](https://user-images.githubusercontent.com/94677128/190648606-d91fc8e5-1a2b-4aa0-b296-25b181820d21.png)
+![Screenshot (96)](https://user-images.githubusercontent.com/94677128/190649061-2ca2f35d-f3bf-4a6a-ad22-f538527f5d1d.png)
+![Screenshot (97)](https://user-images.githubusercontent.com/94677128/190649259-7a7a2e14-dcb0-4941-87a6-84cc0f58237b.png)
 
-##OUTPUT:
-/ Show the result/
 
-##RESULT
-/Type your result here/
+## RESULT
+Thus the above program for standardizing the given data was implemented successfully
